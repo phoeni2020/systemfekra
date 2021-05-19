@@ -7,20 +7,20 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('/assets/vendor/fontawesome-free/css/all.min.css')}}">
     <!-- App CSS Files -->
-    <link rel="stylesheet" href="/assets/vendor/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="/assets/vendor/datepicker/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="/assets/vendor/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="{{asset('/assets/vendor/jquery-ui/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/vendor/datepicker/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/vendor/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/style.min.css')}}">
     <!-- RTL CSS File -->
-    <link rel="stylesheet" href="/assets/css/rtl.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/rtl.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
 </head>
 <style>
     #DataTables_Table_0_filter
@@ -116,11 +116,11 @@
             <!-- User Profile -->
             <li class="nav-item dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="/assets/img/user1-128x128.jpg" class="user-image" alt="User Image">
+                    <img src="{{asset('')}}/assets/img/user1-128x128.jpg" class="user-image" alt="User Image">
                     <span class="hidden-xs">اسم المستخدم</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-<span class="dropdown-item dropdown-header user-header bg-blue"><img src="/assets/img/user1-128x128.jpg"
+<span class="dropdown-item dropdown-header user-header bg-blue"><img src="{{asset('')}}/assets/img/user1-128x128.jpg"
                                                                      class="img-circle" alt="User Image">
 <p>
 User Name - Web Developer
@@ -140,7 +140,7 @@ User Name - Web Developer
     <!-- Main Sidebar -->
     <aside class="main-sidebar sidebar-light-primary py-4 elevation-4">
         <!-- Brand Logo -->
-        <a href="index.html" class="brand-link text-center"><img src="/assets/img/by-the-way-logo.png"
+        <a href="index.html" class="brand-link text-center"><img src="{{asset('')}}/assets/img/by-the-way-logo.png"
                                                                  alt="By The Way Logo" class="brand-image"></a>
         <!-- End Brand Logo -->
         <!-- Sidebar -->
@@ -150,17 +150,8 @@ User Name - Web Developer
             <!-- End Sidebar User Panel -->
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-
-
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false" >
-
-
-
-
-
-
-
                     <li class="nav-item ">
                         <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
                             <p>الحسابات الرئيسية<i class="fas fa-angle-left right"></i></p></a>
@@ -169,6 +160,7 @@ User Name - Web Developer
                             <li class="nav-item"><a  class="nav-link"href="{{url('admin/main/create')}}"><i class="far fa-circle nav-icon"></i><p>  إضافة حساب </p>     </a></li>
                         </ul>
                     </li>
+                    @can('account')
                     <li class="nav-item ">
                         <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
                             <p>الحسابات <i class="fas fa-angle-left right"></i></p></a>
@@ -177,7 +169,19 @@ User Name - Web Developer
                             <li class="nav-item"><a   class="nav-link" href="{{url('admin/account/create')}}"><i class="far fa-circle nav-icon"></i><p>إضافة حساب</p></a></li>
                         </ul>
                     </li>
+                    @endcan
+                    @can('account_fund')
                     <li class="nav-item ">
+                        <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>كشف الصندوق <i class="fas fa-angle-left right"></i></p></a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"><a  class="nav-link" href="{{url('admin/fund')}}"><i class="far fa-circle nav-icon"></i><p>  قائمة كشف الصندوق</p> </a></li>
+                            <li class="nav-item"><a   class="nav-link" href="{{url('admin/fund/create')}}"><i class="far fa-circle nav-icon"></i><p>إضافة حساب جديد</p></a></li>
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('stores')
+                        <li class="nav-item ">
                         <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
                             <p>المخازن <i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
@@ -185,6 +189,7 @@ User Name - Web Developer
                             <li class="nav-item"><a   class="nav-link" href="{{url('admin/store/create')}}"><i class="far fa-circle nav-icon"></i><p>إضافة مخزن</p></a></li>
                         </ul>
                     </li>
+                    @endcan
                     <li class="nav-item ">
                         <a href="#" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i>
                             <p>الموردين <i class="fas fa-angle-left right"></i></p></a>
@@ -225,11 +230,19 @@ User Name - Web Developer
                             <li class="nav-item"><a   class="nav-link" href="{{url('admin/years/create')}}"><i class="far fa-circle nav-icon"></i><p>إضافة سنة مالية</p></a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a href="{{url('admin/report')}}" class="nav-link"><i
+                    <li class="nav-item">
+                        <a href="{{url('admin/report')}}" class="nav-link"><i
                                     class="nav-icon fas fa-file-alt"></i>
-                            <p>تقرير</p></a></li>
-
+                            <p>تقرير</p></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link"><i class="nav-icon fas fa-user-shield"></i>
+                            <p>الصلاحيات <i class="fas fa-angle-left right"></i></p></a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item"><a  class="nav-link" href="{{url('admin/users')}}"><i class="far fa-circle nav-icon"></i><p>  قائمة المستخدمين</p> </a></li>
+                            <li class="nav-item"><a   class="nav-link" href="{{url('admin/users/create')}}"><i class="far fa-circle nav-icon"></i><p>إضافة مستخدم</p></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- End Sidebar Menu -->
@@ -249,18 +262,18 @@ User Name - Web Developer
     <!-- End Main Footer -->
 </div>
 <!-- App JS Files -->
-<script src="/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/vendor/datepicker/bootstrap-datepicker.min.js"></script>
-<script src="/assets/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{asset('/assets/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('/assets/vendor/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('/assets/vendor/datepicker/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('/assets/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- Main JS File -->
-<script src="/assets/js/main.js"></script>
-<script src="/assets/js/custom.js"></script>
+<script src="{{asset('/assets/js/main.js')}}"></script>
+<script src="{{asset('/assets/js/custom.js')}}"></script>
 
 
-<script src="/assets/js/jquery.print.min.js"></script>
-<script src="/assets/js/jquery.print-custom.js"></script>
+<script src="{{asset('/assets/js/jquery.print.min.js')}}"></script>
+<script src="{{asset('/assets/js/jquery.print-custom.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"

@@ -101,7 +101,6 @@ class AccountController extends Controller
 
         return view('account.entry', compact('accounts','transaction'));
     }
-
     public function storeGet(Request $request)
     {
 
@@ -145,7 +144,6 @@ class AccountController extends Controller
 
 
     }
-
     public function postentry(Request $request)
     {
 
@@ -185,8 +183,6 @@ class AccountController extends Controller
 
 
     }
-
-
     public function cashing()
     {
         $accounts = Account::where('name', '!=', 'الصندوق')->get();

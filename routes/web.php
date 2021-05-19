@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 session_start();
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,10 +31,13 @@ Route::get('/sell', function () {
 Route::get('admin/new','AccountController@entry');
 Route::post('admin/entry','AccountController@postentry');
 
-Route::get('admin/login','AdminController@login');
+Route::get('admin/login','AdminController@login')->name('login');
 Route::post('admin/postLogin','AdminController@login');
 Route::get('admin/dashboard','AdminController@index');
 Route::resource('admin/account', 'AccountController');
+Route::resource('admin/fund', 'FundController');
+Route::get('admin/fund/fields/{id}', 'FundController@fieldsfill');
+Route::post('admin/fund/fields/{id}', 'FundController@storefields');
 Route::resource('admin/main', 'MainAccountController');
 Route::resource('admin/store', 'StoreController');
 Route::resource('admin/supplier', 'SuppliersController');
