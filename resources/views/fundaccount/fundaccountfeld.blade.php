@@ -44,7 +44,7 @@
                 <div class="card-block">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <a href="{{url('admin/fund/fields/print/'.$id->id)}}">click me</a>
+                            <a href="{{url('admin/fund/fields/print/'.$id->id)}}">PRINT PDF</a>
                             <table  class="table table-bordered table-striped datatable" style="padding:3px; margin:3px;  border : 1px solid">
                                 <thead>
                                 <tr>

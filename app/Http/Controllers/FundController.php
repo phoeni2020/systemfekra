@@ -100,7 +100,7 @@ class FundController extends Controller
         ]);
         $fundaccount = Fundfields::where('fundaccount',$id);
         $name = Fund::find($id);
-        $pdf = PDF::loadView('pdf.fundaccount',['fundaccounts'=>$fundaccount->get()]);
+        $pdf = PDF::loadView('pdf.newpdf',['fundaccounts'=>$fundaccount->get()]);
 
         return  $pdf->download('fundaccount.pdf');
 
