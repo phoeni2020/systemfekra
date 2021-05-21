@@ -38,6 +38,7 @@ Route::resource('admin/account', 'AccountController');
 Route::resource('admin/fund', 'FundController');
 Route::get('admin/fund/fields/{id}', 'FundController@fieldsfill');
 Route::post('admin/fund/fields/{id}', 'FundController@storefields');
+Route::get('admin/fund/fields/print/{id}', 'FundController@printfundaccount');
 Route::resource('admin/main', 'MainAccountController');
 Route::resource('admin/store', 'StoreController');
 Route::resource('admin/supplier', 'SuppliersController');

@@ -115,10 +115,21 @@ class FundController extends Controller
      */
     public function fieldsfill(Fund $id)
     {
-        $funddetails = $id->fundfields()->get();
-        return view('fundaccount.createfunddetial',['fund'=>$id]);
+        $funddetails = $id->fundfields;
+        if(empty($funddetails->toArray())){
+            return view('fundaccount.createfunddetial',['fund'=>$id]);
+        }
+        return view('fundaccount.fundaccountfeld',['id'=>$id,'fund'=>$funddetails]);
     }
 
+    public function printfundaccount($id)
+    {
+        $fundaccount = Fundfields::where('fundaccount',$id);
+        $name = Fund::find($id);
+        $pdf = PDF::loadView('pdf.newpdf',['fundaccounts'=>$fundaccount->get()]);
+
+        return  $pdf->download('fundaccount.pdf');
+    }
     /**
      * Show the form for editing the specified resource.
      *
