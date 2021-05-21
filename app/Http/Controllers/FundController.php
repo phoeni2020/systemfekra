@@ -17,9 +17,6 @@ class FundController extends Controller
      */
     public function index()
     {
-        if (!isset($_SESSION['admin_id'])) {
-            return redirect('/admin/login');
-        }
         $drivers = Fund::all();
         return view('fundaccount.index', compact('drivers'));
     }
